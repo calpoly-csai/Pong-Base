@@ -8,9 +8,10 @@ Purpose & Importance:
 
 Important Classes & Variables: 
 
-- `class GameConstants`:
-- `class GameCache`:
-- `class GameHelpers`:
+- `static class GameConstants`:
+- `static class GameCache`:
+- `static class GameHelpers`:
+- `class GameManager`:
 
 **`Pong/GamePlayer/_Pong-GamePlayer.cs`**
 
@@ -18,9 +19,10 @@ Purpose & Importance:
 
 Important Classes & Variables:
 
-- `class GameConstants`:
-- `class GameCache`:
-- `class GameHelpers`:
+- `class Player`:
+- `class PlayerData`:
+- `class PlayerController`:
+- `class PlayerControls`:
 
 **`Pong/Ball/Pong-Ball.cs`**
 
@@ -28,9 +30,9 @@ Purpose & Importance:
 
 Important Classes & Variables:
 
-- `class GameConstants`:
-- `class GameCache`:
-- `class GameHelpers`:
+- `class PongBall`:
+- `class PongBallController`:
+- `static class BallGoal`:
 
 ### Non-Header Files
 **`File Path 1`**
