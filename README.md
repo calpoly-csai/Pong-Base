@@ -40,7 +40,7 @@ The code has been formatted in a very specific way to be more readable. This is 
 - `Pong/GamePlayer/Player.cs`: Centralized control of the Player and everything closely associated
 - `Pong/GamePlayer/PlayerController.cs`: contains movement controls for a player
 - `Pong/GamePlayer/PlayerData.cs`: Not important right now, but just know that this will be where data is fed into our RL agent
-- `Pong/Ball/PongBall.cs`: Behavior for the PongBall
+- `Pong/Ball/PongBall.cs`: Behavior for the PongBall 🏀
 - `Pong/Ball/PongBallController.cs`: movement for the ball. Also communicates with `PongBall.cs`
 - `Pong/Physics/RectangularBodyFrame.cs`: manual collision detection. Not THAT important for our purposes, but you should know that it is there
 - `Pong/RL/DataUnit.cs`: Not important right now, but just know that this will be what is fed into our RL agent
