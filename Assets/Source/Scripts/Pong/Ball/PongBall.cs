@@ -1,4 +1,15 @@
 //namespace Pong.Ball;
+<<<<<<< HEAD
+=======
+/// <summary>
+/// PongBall: controls the logic for what happens on score and on rebound 
+/// Initialize: is what happens to the ball when the game begins
+/// Serve: happens when the ball intializes/resets
+/// Destroy Ball: gets rid of sprite
+/// Reset: brings back the spite (repositioned) 
+/// </summary>
+
+>>>>>>> f106512 (Added summary via comments on headers & other important files)
 using Pong.Ball;
 
 using System;
@@ -102,11 +113,14 @@ namespace Pong.Ball {
 
                 //Debug.Log(angle);
                 serveAngles.Push((angle, desire));
+<<<<<<< HEAD
                 
                 //TODO: debug
                 /*if (i == 10) {
                     break;
                 }*/
+=======
+>>>>>>> f106512 (Added summary via comments on headers & other important files)
             }
             
             // the Player serving is the one on the offensive

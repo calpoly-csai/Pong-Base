@@ -1,4 +1,13 @@
 //namespace Pong.GamePlayer.Force;
+<<<<<<< HEAD
+=======
+/// <summary>
+/// Pong.GamePlayer.ForceMap: helps calculate the force/physics of the ball 
+/// ApplyAt: manages the velocity/collision of the ball & paddle 
+/// CalculateRelativeAngle: determines what angle the paddle hit the ball
+/// IsNormalAngle: decides if the angle hit at was normal
+/// </summary>
+>>>>>>> f106512 (Added summary via comments on headers & other important files)
 using Pong.GamePlayer.Force;
 
 using System.Collections;
