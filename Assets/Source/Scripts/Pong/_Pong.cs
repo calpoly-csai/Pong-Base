@@ -1,5 +1,13 @@
 // * NAMESPACE HEADER FILE
+<<<<<<< HEAD
 
+=======
+/// <summary>
+/// Overall this file is a good storage place for a lot of variables that can be updated to quickly change the game logic, rules, and general play
+/// GameConstants: contains constans for winning score, balls center, the position of the paddles 
+/// GameCache: creates a cache to store relevant variables that can be updated during the game by other classes 
+/// </summary>
+>>>>>>> f106512 (Added summary via comments on headers & other important files)
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

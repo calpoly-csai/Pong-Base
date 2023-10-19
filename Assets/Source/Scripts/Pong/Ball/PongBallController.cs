@@ -1,4 +1,16 @@
 //namespace Pong.Ball;
+<<<<<<< HEAD
+=======
+/// <summary>
+/// PongBallController Class: Manages the behavior, movement, and interactions of the pong ball in the game.
+/// - MoveLocal(): Handles the core movement logic, including:
+///    1. Scoring: Triggers OnScore() when hitting left/right boundaries.
+///    2. Rebounding: Uses Rebounder's forceMap to change trajectory when colliding with a player's stick.
+///    3. Vertical Wall Collisions: Reverses y-axis velocity when hitting top/bottom walls.
+/// </summary>
+
+
+>>>>>>> f106512 (Added summary via comments on headers & other important files)
 using Pong.Ball;
 
 using System;

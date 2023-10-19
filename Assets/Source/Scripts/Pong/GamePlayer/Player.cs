@@ -1,4 +1,15 @@
 //namespace Pong.GamePlayer;
+<<<<<<< HEAD
+=======
+///<summary>
+/// Player Class: Manages player attributes, controls, and physics in the game. Serves as the backbone for each player's interaction with the game environment.
+/// - playerData: Stores data for machine learning and save/loading features.
+/// - scoreboard: Manages the player's score.
+/// - CreateNew(): Initializes a new player, giving them a name and setting up their paddle and scoreboard.
+/// - ScorePoint(): Adds a point to the scoreboard and updates any relevant data.
+/// </summary>
+
+>>>>>>> f106512 (Added summary via comments on headers & other important files)
 using Pong.GamePlayer;
 
 using System.Collections;
