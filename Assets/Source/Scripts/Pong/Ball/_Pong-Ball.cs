@@ -11,6 +11,10 @@ namespace Pong.Ball {
      * Player lastTouchedBy
      * Destroys the ball and increments points
     */
+    /// <summary>
+    /// Represents the physical ball that is visible on game screen, and handles
+    /// ball logic such as scoring and serving
+    /// </summary>
     public partial class PongBall {}
 
     /*
@@ -18,6 +22,10 @@ namespace Pong.Ball {
        speedX = GameCache.BALL_SPEED_VP
        velocityY = ForceAdjustment => Equation (due to possible derivatives) 
     */
+    /// <summary>
+    /// Controls the physical ball that is visible on game screen, calculating
+    /// trajectory, movement, and collisions
+    /// </summary>
     public partial class PongBallController : MonoBehaviour {}
 
     /*public static class BallStatus {
@@ -37,6 +45,10 @@ namespace Pong.Ball {
         }
     }*/
 
+    /// <summary>
+    /// Defines constants for keeping track of which player scored last which is used
+    /// to determine which player's turn it is to serve
+    /// </summary>
     public static class BallGoal {
         public const bool LEFT = true;
         public const bool RIGHT = false;

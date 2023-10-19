@@ -54,6 +54,11 @@ namespace Pong.GamePlayer {
             playerSprite = new ControlledGameObject<PlayerController>(sprite, controller);
         }
 
+        /// <summary>
+        /// Initializes a player object including setting the players name, passing them a paddle
+        /// object, setting their viewport view, and setting their controls.
+        /// </summary>
+        /// <returns>Player object</returns>
         public static Player CreateNew(string name, GameObject prefab, Vector2 viewportPos, PlayerControls controls, TMP_Text scoreText) {
             // create paddle
             GameObject paddle = GameObject.Instantiate(prefab, ToLocal(viewportPos), Quaternion.identity);
@@ -92,6 +97,10 @@ namespace Pong.GamePlayer {
             //TODO: playerData.feed(...);
         }
 
+        /// <summary>
+        /// Updates the scoreboard when Player scores a point.
+        /// </summary>
+        /// <returns>None</returns>
         public void ScorePoint() {
             // Game: score point
             scoreboard.ScorePoint();
@@ -105,6 +114,12 @@ namespace Pong.GamePlayer {
             return new Rebounder(forceMap, playerSprite.gameObj.GetComponent<RectangularBodyFrame>());
         }
 
+        /// <summary>
+        /// Sets the dimensions of a players paddle depending on the viewport dimensions which 
+        /// are passed in as two floats. Calculates correct dimensions regardless of viewport
+        /// size, allowing for scalability of game window.
+        /// </summary>
+        /// <returns>void</returns>
         public void SetLocalPaddleDimensionsFromVP(float vpXThickness, float vpYLength) {
             Vector3 bgScale = GameCache.BG_TRANSFORM.localScale;
 
