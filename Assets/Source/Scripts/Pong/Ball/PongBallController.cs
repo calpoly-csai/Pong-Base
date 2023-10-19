@@ -34,6 +34,11 @@ namespace Pong.Ball {
         // initialization check
         private bool isInitialized = false;
 
+        /// <summary>
+        /// Initializes the events that will be interpreted as a point score and a rebound.
+        /// Onscore() and OnRebound() are called as functions during runtime.
+        /// </summary>
+        /// <returns>None</returns>
         public void Initialize(Action scoreProcedure, Action reboundProcedure) {
             OnScore = scoreProcedure;
             OnRebound = reboundProcedure;
@@ -54,6 +59,11 @@ namespace Pong.Ball {
         }
 
         // Update is called once per frame
+        /// <summary>
+        /// Updates the balls position every frame by calculating the current ball velocity,
+        /// then passing this velocity into the MoveLocal function that will move the ball.
+        /// </summary>
+        /// <returns>None</returns>
         void Update()
         {
             if (!isInitialized) {
@@ -71,7 +81,12 @@ namespace Pong.Ball {
             }
         }
 
-        //* Deals with Movement, and Collision + Interactions as a Result of that movement
+        /// <summary>
+        /// Moves the ball in the direction of the passed Vector3, and then calculates any
+        /// collisions or scoring positions that this movement may have placed the ball in.
+        /// Calls functions for scoring or rebounding depending on collision detection.
+        /// </summary>
+        /// <returns>None</returns>
         public void MoveLocal(Vector3 localDelta_dt) {
             // origin is in the center
             Vector3 MAX_POS = BG_TRANSFORM.localScale / 2f;

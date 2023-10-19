@@ -12,6 +12,11 @@ namespace Pong.Physics {
         public Vector2 velocity = new Vector2(0f, 0f);
         public readonly float[] yAccelerationAndBeyond = new float[GameConstants.BALL_Y_MAX_DERIVATIVE - 1];
 
+        /// <summary>
+        /// Creates a new Motion2D object with a pre-set velocity that is specified
+        /// by the input Vector2
+        /// </summary>
+        /// <returns>Motion2D object</returns>
         public Motion2D(Vector2 velocity2f) {
             velocity.Set(velocity2f.x, velocity2f.y);
             ResetYAccelerationAndBeyond();
@@ -39,6 +44,12 @@ namespace Pong.Physics {
             ResetYAccelerationAndBeyond();
         }
 
+        /// <summary>
+        /// Calculates the velocity vector for an object given an input t which represents
+        /// the elapsed trajectory time. This function is called every frame as part of the
+        /// PongBall's update() function.
+        /// </summary>
+        /// <returns>2 dimensional velocity vector</returns>
         public Vector2 CalculateTotalVelocity(float t) {
             Vector2 totalVelocity = new Vector2(velocity.x, velocity.y);
 
@@ -56,6 +67,13 @@ namespace Pong.Physics {
         }
 
         // [(x, y), (x', y'), (x'', y''), ...]
+        /// <summary>
+        /// Takes in a single 2 dimensional vector representing position and returns an array of
+        /// pairs of vectors representing higher derivatives of position and velocity.
+        /// NOTE: higher derivatives of position are always 0, whereas higher derivatives of
+        /// velocity represent acceleration, jerk, etc..
+        /// </summary>
+        /// <returns>An series of 2-dimensional vectors</returns>
         public Vector2[] RetrieveTrajectory(Vector2 position) {
             Vector2[] trajectory = new Vector2[2 + yAccelerationAndBeyond.Length]; // position and velocity are included too!
 
