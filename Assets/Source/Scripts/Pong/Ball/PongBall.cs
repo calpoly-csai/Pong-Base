@@ -28,6 +28,11 @@ namespace Pong.Ball {
         private readonly Action OnScore;
         private readonly Action OnRebound;
 
+        /// <summary>
+        /// constructor for the ball object and give the ball object the logic if how the ball will react when a player 
+        /// scores a goal or how the ball should change its velocity vector when it rebounds the paddle or boundary of the viewport
+        /// </summary>
+        /// <param name="sprite"></param>
         public PongBall(GameObject sprite) {
             OnScore = () => {
                 //* Attacker Scored Goal
@@ -68,6 +73,10 @@ namespace Pong.Ball {
             return pongBall;
         }
 
+        /// <summary>
+        /// initialize the ball and let a player serve the ball so it heads toward opponnet
+        /// </summary>
+        /// <param name="server"></param>
         public void Initialize(Player server) {
             // First, reset the ball (just in case)
             Reset();
@@ -134,11 +143,18 @@ namespace Pong.Ball {
             //TODO: feed to players?
         }
 
+
+        /// <summary>
+        /// destroys the ball when a player scores so it doesn't go off the screen
+        /// </summary>
         public void DestroyBall() {
             ballSprite.gameObj.SetActive(false);
             ballSprite.controller.HaltTrajectory(); // stop the ball from going off the screen
         }
 
+        /// <summary>
+        /// reset the position of the ball
+        /// </summary>
         public void Reset() {
             // set position to start position
             ballSprite.transform.localPosition = GetStartLocalPosition();
@@ -147,6 +163,10 @@ namespace Pong.Ball {
             ballSprite.gameObj.SetActive(true);
         }
 
+        /// <summary>
+        /// set the attacker for who hit the ball last so goals are scored properly?
+        /// </summary>
+        /// <param name="atkr"></param>
         private void SetAttacker(Player atkr) {
             attacker = atkr;
 
@@ -154,11 +174,18 @@ namespace Pong.Ball {
             ballSprite.controller.Rebounder = attacker.Opponent.AsRebounder();
         }
 
+        /// <summary>
+        /// update the ball to swap the attacker
+        /// </summary>
         private void SwapAttacker() {
             SetAttacker(attacker.Opponent);
             attackerDesire = !attackerDesire;
         }
 
+        /// <summary>
+        /// set the dimmensions of the ball?
+        /// </summary>
+        /// <param name="viewportY"></param>
         public void SetLocalScaleFromVPY(float viewportY) {
             Vector3 bgScale = BG_TRANSFORM.localScale;
 
@@ -171,6 +198,12 @@ namespace Pong.Ball {
             //Debug.Log("LocalScale: " + sprite.transform.localScale);
         }
 
+        /// <summary>
+        /// sets the starting position for the ball, center of screen
+        /// </summary>
+        /// <returns>
+        /// returns the starting position of the ball
+        /// </returns>
         public static Vector3 GetStartLocalPosition() {
             return ToLocal(GameConstants.BALL_START_POSITION);
         }
