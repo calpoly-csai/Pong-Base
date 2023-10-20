@@ -36,6 +36,14 @@ namespace Pong.GamePlayer {
         private Player opponent;
 
         // load from data
+        /// <summary>
+        /// Intialize a player with their data, how to control the player, and give the paddles a boundary box so
+        /// the ball can bounce off it
+        /// </summary>
+        /// <param name="playerData"></param>
+        /// <param name="sprite"></param>
+        /// <param name="controls"></param>
+        /// <param name="scoreboard"></param>
         public Player(PlayerData playerData, GameObject sprite, PlayerControls controls, Scoreboard scoreboard) {
             this.playerData = playerData;
             this.scoreboard = scoreboard;
@@ -85,6 +93,10 @@ namespace Pong.GamePlayer {
             set { opponent = value; }
         }
 
+        /// <summary>
+        /// update the information of the player's padldle. For example update the velocity and acceleration when the player
+        /// wants to switch the direction of the paddle of the player no long is moving the paddle
+        /// </summary>
         public void Update() {
             forceMap.PaddleVelocity = ToLocal(playerSprite.controller.GetViewportMotionTracker().velocity).y;
             forceMap.PaddleAcceleration = ToLocal(new Vector2(0f, playerSprite.controller.GetViewportMotionTracker().Y_Acceleration)).y;
@@ -92,6 +104,9 @@ namespace Pong.GamePlayer {
             //TODO: playerData.feed(...);
         }
 
+        /// <summary>
+        /// update the player's score when they socre a goal
+        /// </summary>
         public void ScorePoint() {
             // Game: score point
             scoreboard.ScorePoint();
@@ -105,6 +120,11 @@ namespace Pong.GamePlayer {
             return new Rebounder(forceMap, playerSprite.gameObj.GetComponent<RectangularBodyFrame>());
         }
 
+        /// <summary>
+        /// set the paddles dimensions base off percentages of the viewport
+        /// </summary>
+        /// <param name="vpXThickness"></param>
+        /// <param name="vpYLength"></param>
         public void SetLocalPaddleDimensionsFromVP(float vpXThickness, float vpYLength) {
             Vector3 bgScale = GameCache.BG_TRANSFORM.localScale;
 

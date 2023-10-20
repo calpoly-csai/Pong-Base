@@ -19,8 +19,8 @@ namespace Pong {
 
         // CONTEXT: public => reference in the Unity Editor
         public string player1Name = PlayerData.NO_NAME, player2Name = PlayerData.NO_NAME;
-        public float playerSpeedVP = 1.00f; // per second; travel 100% vertical screen size in one second
-        public float ballSpeedVP = 0.45f;   // per second; travel 45% horizontal screen size in one second
+        public float playerSpeedVP = 1.0f; // per second; travel 100% vertical screen size in one second
+        public float ballSpeedVP = .45f;   // per second; travel 45% horizontal screen size in one second
         public float ballServeMaxAngle = (3f / 7f) * Mathf.PI;
         public float ballBounceMaxAngle = (3f / 7f) * Mathf.PI;
         public uint scoreToWin = GameConstants.DEFAULT_WIN_SCORE;
@@ -29,6 +29,9 @@ namespace Pong {
         public GameObject backgroundSprite; // reference a GameObject in the Scene
         public TMP_Text player1scoreText, player2scoreText; // reference in Scene
 
+        /// <summary>
+        /// for debugging purposes?
+        /// </summary>
         void Awake()
         {
             // Hello World message
@@ -38,6 +41,10 @@ namespace Pong {
             //Debug.Log(GameConstants.LEFT_PADDLE_START_POSITION);
         }
         
+        /// <summary>
+        /// starts the game and stores important data in GameCache.{attribute}. Initialize the player and give the player data.
+        /// Initialize the ball object and serve it so gameplay can begin
+        /// </summary>
         void Start()
         {
             // Cache Desired Global Variables
@@ -65,6 +72,11 @@ namespace Pong {
         }
 
         // Update is called once per frame
+        /// <summary>
+        /// update the player information and the all information every frame.
+        /// update players first so you don't have instances where the ball seemed like it was in one place but then the ball was
+        /// updated before the player so the player missed it. This can help solve this issue
+        /// </summary>
         void Update()
         {
             // Player Updates
@@ -75,6 +87,12 @@ namespace Pong {
             ball.Update(); // didn't call this before the player updates for a better user experience
         }
 
+        /// <summary>
+        /// display the score board
+        /// </summary>
+        /// <returns>
+        /// return as string that contains both players score so it can be displayed
+        /// </returns>
         public string GetCurrentScore() {
             return player1.GetScoreboard().GetScore() + "-" + player2.GetScoreboard().GetScore();
         }

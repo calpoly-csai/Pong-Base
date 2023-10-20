@@ -7,6 +7,9 @@ using UnityEngine;
 using Pong.GamePlayer;
 
 namespace Pong {
+    /// <summary>
+    /// defines global game constants that will be used for the player, ball, and win conditions
+    /// </summary>
     public static class GameConstants {
         // must be >= 1 because velocity is required
         public const uint BALL_Y_MAX_DERIVATIVE = 3; // velocity + (acceleration, acceleration')
@@ -39,7 +42,9 @@ namespace Pong {
 
         public static readonly char[] WINDOWS_BANNED_CHARS = {'\\', '/', ':', '*', '?', '\"', '<', '>', '|'};
     }
-
+    /// <summary>
+    /// stores the values of the game that other functions will call when initialzing the player and ball 
+    /// </summary>
     public static class GameCache {
         // cached at the beginning of GameManager
         public static Transform BG_TRANSFORM;
@@ -54,7 +59,9 @@ namespace Pong {
         // A single hotkey (likely M) will mute the sounds
         public static bool MUTE_SOUNDS = false; // when turned on, audio won't be played
     }
-
+    /// <summary>
+    /// vectors used to update the player's and ball's position?
+    /// </summary>
     public static class GameHelpers {
         public static Vector2 ToVector2(Vector3 vector) {
             return new Vector2(vector.x, vector.y);
