@@ -38,6 +38,12 @@ namespace Pong {
             //Debug.Log(GameConstants.LEFT_PADDLE_START_POSITION);
         }
         
+        /// <summary>
+        /// Initialization of the game when it is first run. Caches global variables such as win score,
+        /// ball speed, max angle, etc. Paddles are initialized, ball object is created and served in a 
+        /// random direction.
+        /// </summary>
+        /// <returns>void</returns>
         void Start()
         {
             // Cache Desired Global Variables
@@ -64,6 +70,11 @@ namespace Pong {
             ball.Serve();
         }
 
+        /// <summary>
+        /// Update player and ball objects every frame. Player paddle movement is
+        /// updated on the screen every frame.
+        /// </summary>
+        /// <return>void</return>
         // Update is called once per frame
         void Update()
         {

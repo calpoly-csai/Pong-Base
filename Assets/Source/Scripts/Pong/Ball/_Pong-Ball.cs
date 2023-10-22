@@ -51,6 +51,8 @@ namespace Pong.Ball {
         public const bool LEFT = true;
         public const bool RIGHT = false;
 
+        // public const bool RIGHT = true;
+
         // Note: we don't even need an INVERT() function because the ! operator already does that with bools! 
     }
 }

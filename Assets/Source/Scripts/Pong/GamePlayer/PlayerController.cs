@@ -31,6 +31,13 @@ namespace Pong.GamePlayer {
 
         }
 
+        /// <summary>
+        /// Update() is called to update the player paddle movement in the viewport.
+        /// At a high level, it gets the current motion of the paddles, and sets the 
+        /// next position of the paddles in the viewport.
+        /// </summary>
+        /// <returns>void</returns>
+        
         // Update is called once per frame
         void Update()
         {
@@ -54,6 +61,12 @@ namespace Pong.GamePlayer {
             viewportMotion.Y_Acceleration = viewportYAcceleration;
         }
 
+        /// <summary>
+        /// RespondToInput() takes the keybord input and sets new change in 
+        /// paddle position in the Unity GameObject. It calculates the change in 
+        /// position through the function DeltaY().
+        /// </summary>
+        /// <returns>a float representing the change in y value for the paddle</returns>
         protected float RespondToInput() {
             float dy = 0f;
 
@@ -79,6 +92,12 @@ namespace Pong.GamePlayer {
             return dy_dt * Time.deltaTime;
         }
 
+        /// <summary>
+        /// takes a float deltaY that was calculated from DeltaY(), to change the 
+        /// paddle position in Unity GameObject. It accounts for changes that causes
+        /// object to move out of bounds.
+        /// </summary>
+        /// <returns>void</returns>
         public void MoveY(float deltaY) {
             // origin is in the center
             float MAX_Y_POS = BG_TRANSFORM.localScale.y / 2f;
