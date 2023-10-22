@@ -1,4 +1,10 @@
 //namespace Pong.GamePlayer;
+/*
+This file is very important for the overall program to work. This file allows the paddles to work. This file also collects data from the player, which will come into use fo rthe AI.
+The method CreateNew is important in this file. This creates the paddles, as well as allows the users to set the name of the players.
+The method update also seems very important. It looks like it updates the velocity and acceleration of the paddles.
+The method SetLocalPaddleDimensionsFromVP is important. It sets the dimensions of the paddles and allows them to actually operate with those dimensions.
+*/
 using Pong.GamePlayer;
 
 using System.Collections;
@@ -53,7 +59,10 @@ namespace Pong.GamePlayer {
             // wrap it up
             playerSprite = new ControlledGameObject<PlayerController>(sprite, controller);
         }
-
+/// <summary>
+/// This creates the paddles, as well as allows the users to set the name of the players.
+/// </summary>
+/// <returns> returns the Player class with the values for the current player
         public static Player CreateNew(string name, GameObject prefab, Vector2 viewportPos, PlayerControls controls, TMP_Text scoreText) {
             // create paddle
             GameObject paddle = GameObject.Instantiate(prefab, ToLocal(viewportPos), Quaternion.identity);
@@ -84,7 +93,10 @@ namespace Pong.GamePlayer {
             get { return opponent; }
             set { opponent = value; }
         }
-
+/// <summary>
+/// It looks like it updates the velocity and acceleration of the paddles.
+/// </summary>
+/// <returns> void, doesn't return anything
         public void Update() {
             forceMap.PaddleVelocity = ToLocal(playerSprite.controller.GetViewportMotionTracker().velocity).y;
             forceMap.PaddleAcceleration = ToLocal(new Vector2(0f, playerSprite.controller.GetViewportMotionTracker().Y_Acceleration)).y;
@@ -104,7 +116,10 @@ namespace Pong.GamePlayer {
         public Rebounder AsRebounder() {
             return new Rebounder(forceMap, playerSprite.gameObj.GetComponent<RectangularBodyFrame>());
         }
-
+/// <summary>
+/// It sets the dimensions of the paddles and allows them to actually operate with those dimensions.
+/// </summary>
+/// <returns> void, doesn't return anything
         public void SetLocalPaddleDimensionsFromVP(float vpXThickness, float vpYLength) {
             Vector3 bgScale = GameCache.BG_TRANSFORM.localScale;
 

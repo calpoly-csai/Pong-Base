@@ -1,4 +1,10 @@
 //namespace Pong.Ball;
+/*
+This file is very important due to the abilities it gives the pong ball. This file handles all of the physics behind the ball in order for it to work properly on the screen.
+The method awake is simple but important. This allows the velocity and all the derivatives of the ball to be set to 0.
+The method RetrieveBallTrajectory is important. This allows the code to capture the velocity and vector of the ball.
+The method moveLocal is important. This allows the code to deal with movement, collision, and interactions as a result of that movement.
+*/
 using Pong.Ball;
 
 using System;
@@ -40,7 +46,10 @@ namespace Pong.Ball {
 
             isInitialized = true;
         }
-
+/// <summary>
+/// This allows the velocity and all the derivatives of the ball to be set to 0.
+/// </summary>
+/// <returns> void, doesnt return anything
         void Awake()
         {
             // cancel motion: no more velocity and further derivatives! all 0
@@ -72,6 +81,10 @@ namespace Pong.Ball {
         }
 
         //* Deals with Movement, and Collision + Interactions as a Result of that movement
+/// <summary>
+/// This allows the code to deal with movement, collision, and interactions as a result of that movement.
+/// </summary>
+/// <returns> void, doesnt return anything
         public void MoveLocal(Vector3 localDelta_dt) {
             // origin is in the center
             Vector3 MAX_POS = BG_TRANSFORM.localScale / 2f;
@@ -172,6 +185,10 @@ namespace Pong.Ball {
 
         // [(x, y), (x', y'), (x'', y''), ...]
         // in terms of viewport %
+/// <summary>
+/// This allows the code to capture the velocity and vector of the ball.
+/// </summary>
+/// <returns> returns a vector of the ball
         public Vector2[] RetrieveBallTrajectory() {
             Vector2 vpLocalPos = ToViewport(transform.localPosition);
 

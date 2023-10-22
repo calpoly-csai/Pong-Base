@@ -1,5 +1,15 @@
 // * NAMESPACE HEADER FILE
+/*
+Important for the actual constants for the game to be stored and inputed somewhere. Also makes sure the game just functions properly.
+The class GameConstants in this file is extremely important; it holds the constants of the game, such as the max score, and score to win
+The class GameCache in this file is extremely important; it holds the context that is passed into GameManager (GameManager sets them)
+The class GameHelpers in this file is extremely important; it creates the vectors and viewports for the code
 
+THREE CHANGES:
+Changed the win score for pong from 11 to 10. This made it so that it is the first person to 10 to win instead of 11.
+Changed the max ball y derivative from 3 to 10. This allowed the ball to travel faster in the y dimension.
+Changed the ball scale y from .05 to .1. This made the ball bigger
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,18 +17,21 @@ using UnityEngine;
 using Pong.GamePlayer;
 
 namespace Pong {
+/// <summary>
+/// Sets all of the constants for the game.
+/// </summary>
     public static class GameConstants {
         // must be >= 1 because velocity is required
-        public const uint BALL_Y_MAX_DERIVATIVE = 3; // velocity + (acceleration, acceleration')
+        public const uint BALL_Y_MAX_DERIVATIVE = 10; // velocity + (acceleration, acceleration')
 
         public const uint MAX_SCORE = 999; // any more than that and the UI kinda clips
-        public const uint DEFAULT_WIN_SCORE = 11; // 11 points is a win in the original Pong game!
+        public const uint DEFAULT_WIN_SCORE = 10; // 11 points is a win in the original Pong game!
 
         // used for abnormal shots
         public const float PADDLE_MASS = 1.00f;
 
         // viewport y
-        public const float BALL_SCALE_Y = 0.05f;
+        public const float BALL_SCALE_Y = 0.1f;
 
         // constants for if origin of a viewport is in the middle of the screen
         public const float CENTER_ORIGIN_X = 0.5f;
@@ -39,6 +52,9 @@ namespace Pong {
 
         public static readonly char[] WINDOWS_BANNED_CHARS = {'\\', '/', ':', '*', '?', '\"', '<', '>', '|'};
     }
+/// <summary>
+/// Sets the context passed into GameManager and set by it.
+/// </summary>
 
     public static class GameCache {
         // cached at the beginning of GameManager
@@ -55,6 +71,9 @@ namespace Pong {
         public static bool MUTE_SOUNDS = false; // when turned on, audio won't be played
     }
 
+/// <summary>
+/// Sets vectors for the game to use.
+/// </summary>
     public static class GameHelpers {
         public static Vector2 ToVector2(Vector3 vector) {
             return new Vector2(vector.x, vector.y);

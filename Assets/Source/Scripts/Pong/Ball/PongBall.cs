@@ -1,4 +1,10 @@
 //namespace Pong.Ball;
+/*
+This file is important because it handles aspects of the ball to make sure it functions properly. This includes when the balls scores, the ball velocity, and the serves
+The method serve is important in this file. It serves the ball to the correct side at a random angle.
+The method reset is important. It resets the ball's position.
+The method DestroyBall is important. This makes the ball "dissappear" once it goes off the screen into the goal.
+*/
 using Pong.Ball;
 
 using System;
@@ -114,6 +120,10 @@ namespace Pong.Ball {
         }
 
         // serve the ball
+/// <summary>
+/// It serves the ball to the correct side at a random angle.
+/// </summary>
+/// <returns> void, doesnt return anything
         public void Serve() {
             (float angle, bool serverDesire) = serveAngles.Pop();
             float speed = BALL_SPEED_VP; // in terms of viewport x percentage
@@ -133,12 +143,18 @@ namespace Pong.Ball {
         public void Update() {
             //TODO: feed to players?
         }
-
+/// <summary>
+/// This makes the ball "dissappear" once it goes off the screen into the goal.
+/// </summary>
+/// <returns> void, doesnt return anything
         public void DestroyBall() {
             ballSprite.gameObj.SetActive(false);
             ballSprite.controller.HaltTrajectory(); // stop the ball from going off the screen
         }
-
+/// <summary>
+/// It resets the ball's position.
+/// </summary>
+/// <returns> void, doesnt return anything
         public void Reset() {
             // set position to start position
             ballSprite.transform.localPosition = GetStartLocalPosition();

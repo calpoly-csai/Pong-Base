@@ -1,11 +1,18 @@
 // * NAMESPACE HEADER FILE
-
+/*
+Important for the pong ball logic and physics to work properly in the game.
+The class PongBall in this file is extremely important; it handles how the velocity and collisions work with the ball
+The class PongBallController in this file is extremely important; it holds the functionality of the actual goals when the ball scores in goal
+The class BallGoal in this file is extremely important; it holds the boolean values for the left and right goal
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 using Pong;
-
+/// <summary>
+/// Handles the velocity and collisions with the ball.
+/// </summary>
 namespace Pong.Ball {
     /*
      * Player lastTouchedBy
@@ -36,7 +43,9 @@ namespace Pong.Ball {
             return Mathf.Abs(ballStatus) == GOAL;
         }
     }*/
-
+/// <summary>
+/// When ball scores in a goal, it sets the left one to true and right one to false, allowing the code to operate smoothly with this ideology.
+/// </summary>
     public static class BallGoal {
         public const bool LEFT = true;
         public const bool RIGHT = false;
