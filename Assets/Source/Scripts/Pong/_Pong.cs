@@ -7,6 +7,12 @@ using UnityEngine;
 using Pong.GamePlayer;
 
 namespace Pong {
+
+    /// <summary>
+    /// GameConstants class defines the constants needed for gameplay setup such as default score to win,
+    /// initial positions of the paddles, initial position of the ball, etc. This class also sets up the 
+    /// control keys for each player to move the paddles.
+    /// </summary>
     public static class GameConstants {
         // must be >= 1 because velocity is required
         public const uint BALL_Y_MAX_DERIVATIVE = 3; // velocity + (acceleration, acceleration')
@@ -40,6 +46,10 @@ namespace Pong {
         public static readonly char[] WINDOWS_BANNED_CHARS = {'\\', '/', ':', '*', '?', '\"', '<', '>', '|'};
     }
 
+    /// <summary>
+    /// Class stores the saved settings of the last gameplay session such as ball speed,
+    /// serve angle, win score, etc.
+    /// </summary>
     public static class GameCache {
         // cached at the beginning of GameManager
         public static Transform BG_TRANSFORM;
@@ -55,6 +65,9 @@ namespace Pong {
         public static bool MUTE_SOUNDS = false; // when turned on, audio won't be played
     }
 
+    /// <summary>
+    /// Helper class for converting 3d vectors to 2d vectors and viewport vectors, and viewport vectors to local vectors
+    /// </summary>
     public static class GameHelpers {
         public static Vector2 ToVector2(Vector3 vector) {
             return new Vector2(vector.x, vector.y);
@@ -79,6 +92,9 @@ namespace Pong {
         }
     }
 
+    /// <summary>
+    /// declare gameplay manager class for implementation later
+    /// </summary>
     public partial class GameManager : MonoBehaviour {}
 
     //public partial class GameContext {}

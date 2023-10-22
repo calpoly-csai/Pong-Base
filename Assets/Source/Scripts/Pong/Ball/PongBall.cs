@@ -18,7 +18,7 @@ namespace Pong.Ball {
     //* After scoring, it goes: DestroyBall() -> [tiny delay] -> Reset() -> [small delay] -> Serve()
     public partial class PongBall {
         public readonly ControlledGameObject<PongBallController> ballSprite; // it won't actually be destroyed; it will just vanish and look like it was destroyed
-        private readonly Stack<(float, bool)> serveAngles = new Stack<(float, bool)>(); // float is in radians, and the int is the attackerDesire
+        private readonly Stack<(float, bool, float)> serveAngles = new Stack<(float, bool, float)>(); // float is in radians, and the int is the attackerDesire, float is speed 
 
         // Player on the offensive
         private Player attacker; // "lastTouchedBy"; the initial trajectory will also set this as the player opposite to where it is traveling
@@ -27,6 +27,8 @@ namespace Pong.Ball {
         // Listeners
         private readonly Action OnScore;
         private readonly Action OnRebound;
+
+        // private int speed_factor = 1;
 
         public PongBall(GameObject sprite) {
             OnScore = () => {
@@ -68,6 +70,12 @@ namespace Pong.Ball {
             return pongBall;
         }
 
+        /// <summary>
+        /// Initialize ball's behavior, including who to serve to first, left or right player.
+        /// Serve angle is also initialized for all the rounds possible for the game, from Round 0 to max round
+        /// Serve angles are pushed onto stack to and used when Serve() is called.
+        /// </summary>
+        /// <returns>void</returns>
         public void Initialize(Player server) {
             // First, reset the ball (just in case)
             Reset();
@@ -88,6 +96,7 @@ namespace Pong.Ball {
             for (uint i = 0; i < maxRounds; ++i) {
                 float angle = UnityEngine.Random.Range(-BALL_SERVE_MAX_ANGLE, BALL_SERVE_MAX_ANGLE); // base; works for if server is on left
                 bool desire;
+                float speed = BALL_SPEED_VP * UnityEngine.Random.Range(0, 5);
 
                 // (i % 2 == 0) => first server is to the right => the right server is on even rounds to serve left
                 // (i % 2 == 1) => first server is to the left => the right server is on odd rounds to serve left
@@ -101,7 +110,7 @@ namespace Pong.Ball {
                 }
 
                 //Debug.Log(angle);
-                serveAngles.Push((angle, desire));
+                serveAngles.Push((angle, desire, speed));
                 
                 //TODO: debug
                 /*if (i == 10) {
@@ -113,10 +122,16 @@ namespace Pong.Ball {
             SetAttacker(server);
         }
 
+        /// <summary>
+        /// Serve te ball to the non attacking player. Swap attacker if current attacker and server
+        /// desire are not equal. Finally, change the ball's velocity and motion in the viewport to 
+        /// have serve shown on screen.
+        /// </summary>
+        /// <returns>void</returns>
         // serve the ball
         public void Serve() {
-            (float angle, bool serverDesire) = serveAngles.Pop();
-            float speed = BALL_SPEED_VP; // in terms of viewport x percentage
+            (float angle, bool serverDesire, float speed) = serveAngles.Pop();
+            // float speed = BALL_SPEED_VP; // in terms of viewport x percentage
 
             bool otherPlayerServingInstead = attackerDesire != serverDesire;
             if (otherPlayerServingInstead) {
@@ -125,6 +140,9 @@ namespace Pong.Ball {
 
             Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)); // unit vector
             Vector2 viewportVelocity = speed * direction;
+
+            // viewportVelocity *= speed_factor;
+            // speed_factor *= 2;
 
             ballSprite.controller.ViewportVelocity = viewportVelocity; // set velocity
             ballSprite.controller.BeginTrajectory(); // start the timer for y'(t)
