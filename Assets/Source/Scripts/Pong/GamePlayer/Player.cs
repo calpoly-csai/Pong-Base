@@ -59,7 +59,10 @@ namespace Pong.GamePlayer {
             // wrap it up
             playerSprite = new ControlledGameObject<PlayerController>(sprite, controller);
         }
-
+/// <summary>
+/// This creates the paddles, as well as allows the users to set the name of the players.
+/// </summary>
+/// <returns> returns the Player class with the values for the current player
         public static Player CreateNew(string name, GameObject prefab, Vector2 viewportPos, PlayerControls controls, TMP_Text scoreText) {
             // create paddle
             GameObject paddle = GameObject.Instantiate(prefab, ToLocal(viewportPos), Quaternion.identity);
@@ -90,7 +93,10 @@ namespace Pong.GamePlayer {
             get { return opponent; }
             set { opponent = value; }
         }
-
+/// <summary>
+/// It looks like it updates the velocity and acceleration of the paddles.
+/// </summary>
+/// <returns> void, doesn't return anything
         public void Update() {
             forceMap.PaddleVelocity = ToLocal(playerSprite.controller.GetViewportMotionTracker().velocity).y;
             forceMap.PaddleAcceleration = ToLocal(new Vector2(0f, playerSprite.controller.GetViewportMotionTracker().Y_Acceleration)).y;
@@ -110,7 +116,10 @@ namespace Pong.GamePlayer {
         public Rebounder AsRebounder() {
             return new Rebounder(forceMap, playerSprite.gameObj.GetComponent<RectangularBodyFrame>());
         }
-
+/// <summary>
+/// It sets the dimensions of the paddles and allows them to actually operate with those dimensions.
+/// </summary>
+/// <returns> void, doesn't return anything
         public void SetLocalPaddleDimensionsFromVP(float vpXThickness, float vpYLength) {
             Vector3 bgScale = GameCache.BG_TRANSFORM.localScale;
 

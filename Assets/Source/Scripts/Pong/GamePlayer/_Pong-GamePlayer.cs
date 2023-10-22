@@ -9,6 +9,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Holds controls for the player to use (up and down), holds the player data in this file for the AI, and also holds the behavior type for the controller.
+/// </summary>
 namespace Pong.GamePlayer {
     public partial class Player {}
 

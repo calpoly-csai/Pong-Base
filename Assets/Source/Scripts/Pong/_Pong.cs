@@ -17,6 +17,9 @@ using UnityEngine;
 using Pong.GamePlayer;
 
 namespace Pong {
+/// <summary>
+/// Sets all of the constants for the game.
+/// </summary>
     public static class GameConstants {
         // must be >= 1 because velocity is required
         public const uint BALL_Y_MAX_DERIVATIVE = 10; // velocity + (acceleration, acceleration')
@@ -49,6 +52,9 @@ namespace Pong {
 
         public static readonly char[] WINDOWS_BANNED_CHARS = {'\\', '/', ':', '*', '?', '\"', '<', '>', '|'};
     }
+/// <summary>
+/// Sets the context passed into GameManager and set by it.
+/// </summary>
 
     public static class GameCache {
         // cached at the beginning of GameManager
@@ -65,6 +71,9 @@ namespace Pong {
         public static bool MUTE_SOUNDS = false; // when turned on, audio won't be played
     }
 
+/// <summary>
+/// Sets vectors for the game to use.
+/// </summary>
     public static class GameHelpers {
         public static Vector2 ToVector2(Vector3 vector) {
             return new Vector2(vector.x, vector.y);

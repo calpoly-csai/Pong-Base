@@ -10,7 +10,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Pong;
-
+/// <summary>
+/// Handles the velocity and collisions with the ball.
+/// </summary>
 namespace Pong.Ball {
     /*
      * Player lastTouchedBy
@@ -41,7 +43,9 @@ namespace Pong.Ball {
             return Mathf.Abs(ballStatus) == GOAL;
         }
     }*/
-
+/// <summary>
+/// When ball scores in a goal, it sets the left one to true and right one to false, allowing the code to operate smoothly with this ideology.
+/// </summary>
     public static class BallGoal {
         public const bool LEFT = true;
         public const bool RIGHT = false;
