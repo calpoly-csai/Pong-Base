@@ -7,7 +7,8 @@ The class GameHelpers in this file is extremely important; it creates the vector
 
 THREE CHANGES:
 Changed the win score for pong from 11 to 10. This made it so that it is the first person to 10 to win instead of 11.
-Changed the max ball y derivative from 3 to 10.
+Changed the max ball y derivative from 3 to 10. This allowed the ball to travel faster in the y dimension.
+Changed the ball scale y from .05 to .1. This made the ball bigger
 */
 using System.Collections;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Pong {
         public const float PADDLE_MASS = 1.00f;
 
         // viewport y
-        public const float BALL_SCALE_Y = 0.05f;
+        public const float BALL_SCALE_Y = 0.1f;
 
         // constants for if origin of a viewport is in the middle of the screen
         public const float CENTER_ORIGIN_X = 0.5f;
