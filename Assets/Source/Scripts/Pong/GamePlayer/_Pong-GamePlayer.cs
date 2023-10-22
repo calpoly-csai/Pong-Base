@@ -1,5 +1,10 @@
 // * NAMESPACE HEADER FILE
-
+/*
+Important for the player controls and data to work properly.
+The class PlayerControls in this file is extremely important; it holds the controls for the player to use (input for the game)
+The class PlayerData in this file is extremely important; it holds the player data (which will probably be used for the AI)
+The class PlayerController in this file is extremely important; it holds the behavior type for the controller
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

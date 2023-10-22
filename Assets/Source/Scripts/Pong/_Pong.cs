@@ -1,5 +1,14 @@
 // * NAMESPACE HEADER FILE
+/*
+Important for the actual constants for the game to be stored and inputed somewhere. Also makes sure the game just functions properly.
+The class GameConstants in this file is extremely important; it holds the constants of the game, such as the max score, and score to win
+The class GameCache in this file is extremely important; it holds the context that is passed into GameManager (GameManager sets them)
+The class GameHelpers in this file is extremely important; it creates the vectors and viewports for the code
 
+THREE CHANGES:
+Changed the win score for pong from 11 to 10. This made it so that it is the first person to 10 to win instead of 11.
+Changed the max ball y derivative from 3 to 10.
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +18,10 @@ using Pong.GamePlayer;
 namespace Pong {
     public static class GameConstants {
         // must be >= 1 because velocity is required
-        public const uint BALL_Y_MAX_DERIVATIVE = 3; // velocity + (acceleration, acceleration')
+        public const uint BALL_Y_MAX_DERIVATIVE = 10; // velocity + (acceleration, acceleration')
 
         public const uint MAX_SCORE = 999; // any more than that and the UI kinda clips
-        public const uint DEFAULT_WIN_SCORE = 11; // 11 points is a win in the original Pong game!
+        public const uint DEFAULT_WIN_SCORE = 10; // 11 points is a win in the original Pong game!
 
         // used for abnormal shots
         public const float PADDLE_MASS = 1.00f;

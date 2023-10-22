@@ -1,4 +1,10 @@
 //namespace Pong.Ball;
+/*
+This file is very important due to the abilities it gives the pong ball. This file handles all of the physics behind the ball in order for it to work properly on the screen.
+The method awake is simple but important. This allows the velocity and all the derivatives of the ball to be set to 0.
+The method RetrieveBallTrajectory is important. This allows the code to capture the velocity and vector of the ball.
+The method moveLocal is important. This allows the code to deal with movement, collision, and interactions as a result of that movement.
+*/
 using Pong.Ball;
 
 using System;

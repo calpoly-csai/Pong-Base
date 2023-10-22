@@ -1,5 +1,10 @@
 // * NAMESPACE HEADER FILE
-
+/*
+Important for the pong ball logic and physics to work properly in the game.
+The class PongBall in this file is extremely important; it handles how the velocity and collisions work with the ball
+The class PongBallController in this file is extremely important; it holds the functionality of the actual goals when the ball scores in goal
+The class BallGoal in this file is extremely important; it holds the boolean values for the left and right goal
+*/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,4 +1,10 @@
 //namespace Pong.GamePlayer;
+/*
+This file is very important for the overall program to work. This file allows the paddles to work. This file also collects data from the player, which will come into use fo rthe AI.
+The method CreateNew is important in this file. This creates the paddles, as well as allows the users to set the name of the players.
+The method update also seems very important. It looks like it updates the velocity and acceleration of the paddles.
+The method SetLocalPaddleDimensionsFromVP is important. It sets the dimensions of the paddles and allows them to actually operate with those dimensions.
+*/
 using Pong.GamePlayer;
 
 using System.Collections;
